@@ -43,9 +43,9 @@ require("dotenv").config();
      next();
  });
 
-//  mongoose.connect(process.env.DEVURL, options, function () {
-//     //mongoose.connection.db.dropDatabase();
-// });
+ mongoose.connect(process.env.DEVURL, options, function () {
+    //mongoose.connection.db.dropDatabase();
+});
 
 
 app.listen(process.env.PORT || 3000,"localhost",()=>{//connect ith the environment port, or 3000 as a backup.
