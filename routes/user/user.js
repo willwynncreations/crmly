@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router({
     mergeParams: true
 });
-const middleware = require("../../middleware");
 const passport = require("passport");
 const User = require("../../models/user");
 
@@ -14,9 +13,8 @@ router.get("/login", (req, res) => {
 //login post route.
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login"
-}, (req, res) => {
-    // console.log("login");
+    failureRedirect: "/user/login",
+    failureFlash: true
 }));
 
 //logout get route
@@ -31,9 +29,13 @@ router.get("/register",(req,res)=>{
 
 router.post("/register", (req, res) => {
     //console.log(req.body);
-    var newUser = new User(req.body.user);
-    newUser.email = req.body.user.email;
-    newUser.posid = "5";
+    var newUser = new User({
+        username:req.body.user.username,
+        first_name: req.body.user.first_name,
+        last_name: req.body.user.last_name,
+        email: req.body.user.email,
+        posid: "5"
+    });
     User.findOne({
         username: req.body.user.username
     }, (err, foundUser) => {
@@ -45,11 +47,12 @@ router.post("/register", (req, res) => {
             req.flash("User already exists.");
             res.redirect("/user/login");
         }
-        
-        newUser.save();
+        User.register(newUser,req.body.user.password,(err,user)=>{
+
+        });
         passport.authenticate("local", {
             successRedirect: "/",
-            failureFlash: "Error registering user: " + req.body.user,
+            //failureFlash: "Error registering user: " + req.body.user,
             failureRedirect: "/user/login"
         });
     });

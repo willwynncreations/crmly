@@ -4,7 +4,7 @@ const mongoose          = require("mongoose");
 const passport          = require("passport");
 const flash             = require("connect-flash");
 const methodOverride    = require("method-override");
-const LocalStrategy     = require("passport-local").Strategy;
+const LocalStrategy     = require("passport-local");
 const bodyParser        = require("body-parser");
 const User              = require("./models/user");
 
@@ -31,8 +31,8 @@ require("dotenv").config();
   app.use(passport.initialize());
   app.use(passport.session());
   passport.use(new LocalStrategy(User.authenticate()));
-  //passport.serializeUser(User.serializeUser());
-  //passport.deserializeUser(User.deserializeUser());
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
 
 
  app.use(function (req, res, next) {
