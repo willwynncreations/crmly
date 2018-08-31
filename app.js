@@ -7,7 +7,6 @@ const methodOverride    = require("method-override");
 const LocalStrategy     = require("passport-local").Strategy;
 const bodyParser        = require("body-parser");
 
-
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
@@ -46,6 +45,26 @@ require("dotenv").config();
  mongoose.connect(process.env.DEVURL, options, function () {
     //mongoose.connection.db.dropDatabase();
 });
+
+
+/*
+
+*   Route Definition Section
+*   
+*
+*
+
+*/
+    //Tell the app where the route is.
+    const indexRoute = require("./routes/index");
+
+
+
+    //Tell the app, to use the route
+    app.use(indexRoute);
+
+
+
 
 
 app.listen(process.env.PORT || 3000,"localhost",()=>{//connect ith the environment port, or 3000 as a backup.
