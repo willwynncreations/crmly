@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row"> 
-            <form class="form login-form" action="/user/login" method="post">
+            <form class="form login-form" action="/user/register" method="post">
                 <div class="form-group row">
                     <label for="user[username]" class="col-sm-2 col-form-label">Username:</label>
                     <div class="col-md-3">
@@ -13,6 +13,18 @@
                     <label for="user[password]" class="col-sm-2 col-form-label">Password:</label>
                     <div class="col-md-3">
                         <input class="form-control" type="password" placeholder="Password" name="user[password]">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="user[first_name]" class="col-sm-2 col-form-label">First Name:</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" placeholder="First Name" name="user[first_name]">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="user[last_name]" class="col-sm-2 col-form-label">Last Name:</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" placeholder="Password" name="user[last_name]">
                     </div>
                 </div>
                 <div class="form-group row">
