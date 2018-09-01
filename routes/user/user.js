@@ -34,7 +34,8 @@ router.post("/register", (req, res) => {
         first_name: req.body.user.first_name,
         last_name: req.body.user.last_name,
         email: req.body.user.email,
-        posid: "5"
+        posid: "5",
+        posDescription:"CSR Base"
     });
     User.findOne({
         username: req.body.user.username
