@@ -1,6 +1,51 @@
 <% include partials/header %>
+    <div class="container-full">
+        <div class="row">
+            <div class="col-md-2"><!-- Side bar -->
+                <ul class="list-group">
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <% if(!customer){ %>
+                    <div class="col-md-3">
+                        <form class="form form-horizontal" method="post" action="/search">
+                            <div class="form-group">
+                                <label for="form-control-label">Customer Search:</label>
+                                <input class="form-control" type="text" name="searchTerm">
+                            </div>
+                                <input type="submit" value="Search" class="btn btn-large btn-success">
+                        </form>
+                    </div>
+
+
+                <% }else{ %>
+                    <div>
+                        <h3>Customer Info</h3>
+                        <ul>
+                            <li>Name: <%=customer.firstName + customer.lastName%></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Services</h3>
+                    </div>    
+
+                <% } %>     
+            </div>
+            <div class="col-md-10">
+                <% if(!customer){ %>
 
 
 
-
+                <% }else{ %>
+                    <div>
+                        <h3>Account Interactions</h3>
+                    </div>            
+                <% } %>
+            </div>
+        </div>
+    </div>
 <% include partials/footer %>

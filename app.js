@@ -42,6 +42,13 @@ require("dotenv").config();
      res.locals.success = req.flash("success");
      next();
  });
+  app.use(function (req, res, next) {
+      //console.log(req.user);
+      res.locals.customer = req.customer;
+      res.locals.error = req.flash("error");
+      res.locals.success = req.flash("success");
+      next();
+  });
 
  mongoose.connect(process.env.DEVURL, options, function () {
     //mongoose.connection.db.dropDatabase();
