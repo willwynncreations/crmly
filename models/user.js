@@ -1,5 +1,6 @@
 const passportLocalMongoose      = require("passport-local-mongoose");
 const mongoose                   = require("mongoose");
+const searchable                 = require('mongoose-searchable');
 
 var UserSchema = new mongoose.Schema({
     username: String,
@@ -18,5 +19,6 @@ UserSchema.index({
 });
 
 UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(searchable);
 
 module.exports = mongoose.model("User",UserSchema);

@@ -1,7 +1,8 @@
 const passportLocalMongoose = require("passport-local-mongoose");
-const mongoose = require("mongoose");
+const mongoose              = require("mongoose");
+const searchable            = require('mongoose-searchable');
 
-var UserSchema = new mongoose.Schema({
+var ProductSchema = new mongoose.Schema({
     productName: String,
     duration: String,
     type:String, 
@@ -10,12 +11,13 @@ var UserSchema = new mongoose.Schema({
     description: String
 });
 
-UserSchema.index({
+ProductSchema.index({
     pkey: 1
 }, {
     unique: true
 });
 
-UserSchema.plugin(passportLocalMongoose);
+ProductSchema.plugin(passportLocalMongoose);
+ProductSchema.plugin(searchable);
 
-module.exports = mongoose.model("Product", UserSchema);
+module.exports = mongoose.model("Product", ProductSchema);

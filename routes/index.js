@@ -3,14 +3,27 @@ const router            = express.Router({mergeParams:true});
 const middleware        = require("../middleware");
 const passport          = require("passport");
 const Customer          = require("../models/customer");
-const Searchable        = requre("mongoose-searchable");
 
 
-router.post("/search",(req,res,next)=>{
-    //we need to search the DB for the term sent over by the search field and return a customer if found.
-    Customer.find();
-    //Return flash error if we don't find a customer.
+router.get("/search/results", middleware.isLoggedIn, (req, res, next) => {
+    res.render("landing");
 });
+
+router.post("/search", middleware.isLoggedIn,(req, res, next) => {
+    Customer.find({
+                btn: {
+                    $regex: ".*" + req.body.searchTerm
+                }
+            }, (err, customers) => {
+                //console.log(customers);
+                res.render("landing");
+    });
+});
+
+router.get("/search",middleware.isLoggedIn,(req,res,next)=>{
+    res.render("landing");
+});
+
 
 //Base route for site.
 router.get("/",middleware.isLoggedIn,(req,res,next)=>{

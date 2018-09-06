@@ -10,35 +10,33 @@
                 </ul>
             </div>
             <div class="col-md-8">
-                <% if(!customer){ %>
+                <% if(!customers){ %> 
+   
                     <div class="col-md-3">
                         <form class="form form-horizontal" method="post" action="/search">
                             <div class="form-group">
-                                <label for="form-control-label">Customer Search:</label>
+                                <label for="form-control-label">Customer Search BTN:</label>
                                 <input class="form-control" type="text" name="searchTerm">
                             </div>
                                 <input type="submit" value="Search" class="btn btn-large btn-success">
                         </form>
                     </div>
 
-
                 <% }else{ %>
-                    <div>
+                  <div>
                         <h3>Customer Info</h3>
                         <ul>
-                            <li>Name: <%=customer.firstName + customer.lastName%></li>
+                            <li>Name: <%=customers[0].first_name + customers[0].last_name %></li>
                         </ul>
                     </div>
                     <div>
                         <h3>Services</h3>
-                    </div>    
+                    </div>  
 
                 <% } %>     
             </div>
             <div class="col-md-10">
-                <% if(!customer){ %>
-
-
+                <% if(!customers){ %>
 
                 <% }else{ %>
                     <div>
