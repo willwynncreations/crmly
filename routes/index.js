@@ -5,6 +5,11 @@ const passport          = require("passport");
 const Customer          = require("../models/customer");
 
 
+router.get("/:id",middleware.isLoggedIn,(req,res,next)=>{
+    res.locals.customers = req.body.id;
+});
+
+
 router.get("/search/results", middleware.isLoggedIn, (req, res, next) => {
     res.render("landing");
 });
@@ -15,8 +20,11 @@ router.post("/search", middleware.isLoggedIn,(req, res, next) => {
                     $regex: ".*" + req.body.searchTerm
                 }
             }, (err, customers) => {
+                if (customers == "[]") {                 
+                    res.render("search");
+                }
                 //console.log(customers);
-                res.render("landing");
+                res.render("results",{customers:customers});
     });
 });
 

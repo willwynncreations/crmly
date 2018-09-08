@@ -1,0 +1,24 @@
+<% include partials/header %>
+    <div class="container-full">
+        <div class="row">
+            <div class="col-md-2"><!-- Side bar -->
+                <ul class="list-group">
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                    <li class="list-group-item">Customer Search</li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <h3>Search Results</h3>
+                <% if(customers){ %>
+                    <% for(var i =0; i<customers.length; i++){ %>
+                        <div><span><a href="/<%=customers[i]._id %>" ><%= customers[0].first_name +" "+ customers[0].last_name+ " - " + customers[0].btn %></a></span></div>
+                    <% } %>
+                <% }else{ %>
+
+                <% } %>
+            </div>
+        </div>
+    </div>
+<% include partials/footer %>

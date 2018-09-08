@@ -1,6 +1,6 @@
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose              = require("mongoose");
-const searchable            = require('mongoose-searchable');
+
 
 var CustomerSchema = new mongoose.Schema({
     first_name: {
@@ -52,6 +52,6 @@ CustomerSchema.index(
     }
 );
 CustomerSchema.plugin(passportLocalMongoose);
-CustomerSchema.plugin(searchable);
+
 
 module.exports = mongoose.model("Customer", CustomerSchema);

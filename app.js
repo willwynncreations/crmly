@@ -37,8 +37,9 @@ require("dotenv").config();
 
 
  app.use(function (req, res, next) {
-     //console.log(req.user);
+     console.log(req.user);
      res.locals.currentUser = req.user;
+    // res.locals.customers = req.customers;
      res.locals.error = req.flash("error");
      res.locals.success = req.flash("success");
      next();
