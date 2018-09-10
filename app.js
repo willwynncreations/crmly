@@ -37,7 +37,7 @@ require("dotenv").config();
 
 
  app.use(function (req, res, next) {
-     console.log(req.user);
+    // console.log(req.user);
      res.locals.currentUser = req.user;
     // res.locals.customers = req.customers;
      res.locals.error = req.flash("error");
@@ -67,11 +67,12 @@ require("dotenv").config();
     //Tell the app where the route is.
     const indexRoute = require("./routes/index");
     const userRoute = require("./routes/user/user");
-
+    const customerRoute = require("./routes/customer/customer");
 
     //Tell the app, to use the route
     app.use(indexRoute);
     app.use("/user",userRoute);
+    app.use("/customer",customerRoute);
 
     /*
      *  Populate table with some customers so we can test.

@@ -5,11 +5,6 @@ const passport          = require("passport");
 const Customer          = require("../models/customer");
 
 
-router.get("/:id",middleware.isLoggedIn,(req,res,next)=>{
-    res.locals.customers = req.body.id;
-});
-
-
 router.get("/search/results", middleware.isLoggedIn, (req, res, next) => {
     res.render("landing");
 });
