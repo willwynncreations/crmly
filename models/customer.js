@@ -1,6 +1,7 @@
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose              = require("mongoose");
-
+const productModel          = require("./product");
+var Schema = mongoose.Schema;
 
 var CustomerSchema = new mongoose.Schema({
     first_name: {
@@ -43,7 +44,13 @@ var CustomerSchema = new mongoose.Schema({
     ctn: {
         type: String,
         text: true
-    }
+    },
+    package:[{
+        id:{
+            type: Schema.Types.ObjectId,
+            ref: "Package"
+        }
+    }]
 });
 
 CustomerSchema.index(

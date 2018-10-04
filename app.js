@@ -118,7 +118,7 @@ require("dotenv").config();
 
     //Catchall 404 route.
     app.get("*",(req,res)=>{
-        res.send("<h1>You have reached the lost lands of CRMness</h1>");
+        res.redirect("../");
     });
 
 app.listen(process.env.PORT || 3000,"localhost",()=>{//connect ith the environment port, or 3000 as a backup.

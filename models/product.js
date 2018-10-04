@@ -1,6 +1,6 @@
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose              = require("mongoose");
-const searchable            = require('mongoose-searchable');
+
 
 var ProductSchema = new mongoose.Schema({
     productName: String,
@@ -18,6 +18,6 @@ ProductSchema.index({
 });
 
 ProductSchema.plugin(passportLocalMongoose);
-ProductSchema.plugin(searchable);
+
 
 module.exports = mongoose.model("Product", ProductSchema);
